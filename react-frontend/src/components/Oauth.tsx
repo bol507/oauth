@@ -1,7 +1,7 @@
-const Oauth = () => {
+const Oauth: React.FC = () => {
   const loginWithGitHub = () => {
     window.location.assign(
-      "https://github.com/login/oauth/authorize?client_id=c2aef1ba88390a0a6eb6",
+      'https://github.com/login/oauth/authorize?client_id=c2aef1ba88390a0a6eb6'
     );
   };
   return (

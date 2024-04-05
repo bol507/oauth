@@ -1,6 +1,6 @@
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 
-const Redirect = ({ user, loggedIn }) => {
+const Redirect: React.FC = ({ user, loggedIn }) => {
   return (
     <div className="App  text-center container-fluid">
       {!loggedIn ? (
@@ -17,7 +17,7 @@ const Redirect = ({ user, loggedIn }) => {
           <Container>
             <Row className="card-example d-flex flex-row flex-nowrap overflow-auto">
               <Col>
-                <Card style={{ maxWidth: "25%", margin: "auto" }}>
+                <Card style={{ maxWidth: '25%', margin: 'auto' }}>
                   <Card.Img variant="top" src={user.avatar_url} />
                   <Card.Body>
                     <Card.Title>{user.name}</Card.Title>
