@@ -11,7 +11,7 @@ const githubUrl = process.env.GITHUB_URL;
 const frontendUrl = process.env.FRONTEND_URL;
 const url = `${githubUrl}?client_id=${clientId}&client_secret=${clientSecret}&code=`;
 
-router.get('/oauth/redirect', async (req: Request, res: Response) => {
+router.get('/', async (req: Request, res: Response) => {
   await axios({
     method: 'POST',
     url: url + `${req.query.code}`,
