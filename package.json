@@ -1,0 +1,16 @@
+{
+  "name": "Oauth",
+  "version": "1.0.0",
+  "description": "Basic implementations oauth",
+  "main": "index.js",
+  "repository": "https://github.com/bol507/oauth.git",
+  "author": "Bolivar Delgado <bolivar.delgado@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "husky": "^8.0.0"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "eslintfix": "eslint --ext ts,tsx src --quiet"
+  }
+}
