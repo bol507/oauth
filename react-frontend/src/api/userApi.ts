@@ -1,7 +1,7 @@
 import api from './api';
 
 const URLS = {
-  fetchUserUrl: 'getUser'
+  apiProxyUrl: 'http://bdelgado.duckdns.org:6002/api/user'
 };
 
 export type userData = {
@@ -10,7 +10,7 @@ export type userData = {
 };
 
 export const fetchUser = () => {
-  return api.get<userData>(URLS.fetchUserUrl, {
-    baseURL: 'http://bdelgado.duckdns.org::6002/api/user'
-  });
+  return api.get<userData>(URLS.apiProxyUrl);
 };
+
+export default { fetchUser };
