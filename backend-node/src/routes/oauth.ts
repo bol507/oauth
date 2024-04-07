@@ -12,6 +12,7 @@ const frontendUrl = process.env.FRONTEND_URL;
 const url = `${githubUrl}?client_id=${clientId}&client_secret=${clientSecret}&code=`;
 
 router.get('/', async (req: Request, res: Response) => {
+  console.log('oauth')
   await axios({
     method: 'POST',
     url: url + `${req.query.code}`,
@@ -20,6 +21,8 @@ router.get('/', async (req: Request, res: Response) => {
     }
   }).then((response: AxiosResponse<{ access_token: string }>) => {
     res.redirect(`${frontendUrl}/oauth?access_token=${response.data.access_token}`);
+  }).catch((err) => {
+    console.log(`Error occured ${err}`);
   });
 });
 
