@@ -2,13 +2,14 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import Oauth from './components/Oauth';
-import Dashboard from './components/Dashboard';
+import Oauth from '@/components/Oauth';
+import Dashboard from '@/components/Dashboard';
+import Navbar from '@/components/Navbar';
 
 import './App.css';
 
 const App: React.FC = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [isLogged, setIsLogged] = useState(false);
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const App: React.FC = () => {
         })
         .then((res) => {
           setUser(res.data);
-          setLoggedIn(true);
+          setIsLogged(true);
           console.log('user', res.data);
           navigate('/Dashboard');
         })
@@ -46,12 +47,10 @@ const App: React.FC = () => {
 
   return (
     <div>
+      <Navbar isLogged={isLogged} />
       <Routes>
         <Route path="/" element={<Oauth />} />
-        <Route
-          path="/dashboard"
-          element={<Dashboard user={user} loggedIn={loggedIn} />}
-        />
+        <Route path="/dashboard" element={<Dashboard user={user} />} />
       </Routes>
     </div>
   );
