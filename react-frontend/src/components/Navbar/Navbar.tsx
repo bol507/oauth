@@ -24,8 +24,8 @@ const Navbar = ({ isLogged }: NavbarProps) => {
       {isLogged ? (
         <Links />
       ) : (
-        <Link className="mx-5 px-2" to="logout">
-          logout
+        <Link className="mx-5 px-2" to="login">
+          login
         </Link>
       )}
     </nav>
