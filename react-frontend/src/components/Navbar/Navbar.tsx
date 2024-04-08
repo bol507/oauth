@@ -15,7 +15,8 @@ const Navbar = ({ isLogged }: NavbarProps) => {
     w-full
     items-center 
     py-2
-    bg-slate-200
+    bg-blue-200
+    h-full
   `;
   console.info('isLogged', isLogged);
   return (

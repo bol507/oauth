@@ -1,56 +1,33 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import Oauth from '@/components/Oauth';
-import Dashboard from '@/components/Dashboard';
-import Navbar from '@/components/Navbar';
-
 import './App.css';
 
-const App: React.FC = () => {
-  const [isLogged, setIsLogged] = useState(false);
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
-  const navigate = useNavigate();
+import DashboardLayout from '@/layout/DashboardLayout';
+import AuthLayout from '@/layout/AuthLayout';
 
-  useEffect(() => {
-    const param = new URLSearchParams(window.location.search).get(
-      'access_token'
-    );
+import Dashboard from '@/views/dashboard/Dashboard';
+import Login from '@/views/auth/Login';
+import Profile from '@/views/dashboard/Profile';
+import Settings from '@/views/dashboard/Settings';
+import Welcome from '@/views/dashboard/Welcome';
 
-    if (param) {
-      setToken(param);
-      localStorage.setItem('accessToken', param);
-    }
-
-    if (localStorage.getItem('accessToken') !== null) {
-      console.log(localStorage.getItem('accessToken'));
-      setToken(localStorage.getItem('accessToken'));
-      axios
-        .get('https://api.github.com/user', {
-          headers: {
-            Authorization: 'token ' + localStorage.getItem('accessToken')
-          }
-        })
-        .then((res) => {
-          setUser(res.data);
-          setIsLogged(true);
-          console.log('user', res.data);
-          navigate('/Dashboard');
-        })
-        .catch((error) => {
-          console.log('error ' + error.message);
-        });
-    }
-  }, []);
-
+const App = () => {
   return (
     <div>
-      <Navbar isLogged={isLogged} />
       <Routes>
-        <Route path="/" element={<Oauth />} />
-        <Route path="/dashboard" element={<Dashboard user={user} />} />
+        <Route element={<DashboardLayout />}>
+          <Route path="/" element={<Dashboard />}>
+            <Route index element={<Welcome />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/settings" element={<Settings />} />
+          </Route>
+        </Route>
+
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<Login />} />
+        </Route>
       </Routes>
     </div>
   );
