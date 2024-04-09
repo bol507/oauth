@@ -20,7 +20,7 @@ router.get('/', async (req: Request, res: Response) => {
       Accept: 'application/json'
     }
   }).then((response: AxiosResponse<{ access_token: string }>) => {
-    res.redirect(`${frontendUrl}/oauth?access_token=${response.data.access_token}`);
+    res.redirect(`${frontendUrl}?access_token=${response.data.access_token}`);
   }).catch((err) => {
     console.log(`Error occured ${err}`);
   });
