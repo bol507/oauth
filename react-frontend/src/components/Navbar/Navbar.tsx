@@ -2,11 +2,8 @@ import React from 'react';
 import Links from './Links';
 import { Link } from 'react-router-dom';
 
-interface NavbarProps {
-  isLogged: boolean;
-}
-
-const Navbar = ({ isLogged }: NavbarProps) => {
+const Navbar = () => {
+  const isLogged = true;
   const navClass = `
     flex
     justify-end
@@ -18,7 +15,7 @@ const Navbar = ({ isLogged }: NavbarProps) => {
     bg-blue-200
     h-full
   `;
-  console.info('isLogged', isLogged);
+
   return (
     <nav className={navClass}>
       {isLogged ? (

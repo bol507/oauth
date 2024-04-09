@@ -1,5 +1,6 @@
+import { useContext } from 'react';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
-
+import { useUser } from '@/contexts/userContext';
 interface DashboardProps {
   user: {
     avatar_url: string;
@@ -9,7 +10,12 @@ interface DashboardProps {
   };
 }
 
-const Dashboard = ({ user }: DashboardProps) => {
+const Dashboard = () => {
+  const { user } = useUser();
+
+  if (!user) {
+    return null;
+  }
   return (
     <div className="App  text-center container-fluid">
       <h1>Welcome!</h1>

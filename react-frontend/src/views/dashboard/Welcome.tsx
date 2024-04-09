@@ -1,8 +1,11 @@
-interface WelcomeProps {
-  //
-}
-const Welcome = (props: WelcomeProps) => {
-  return <div>Welcome</div>;
+import Dashboard from '@/components/Dashboard';
+
+const Welcome = () => {
+  return (
+    <>
+      <Dashboard />
+    </>
+  );
 };
 
 export default Welcome;
