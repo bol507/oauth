@@ -14,7 +14,7 @@ const DashboardLayout = (props: DashboardLayoutProps) => {
       <div className="col-span-2 row-span-1">
         <Header />
       </div>
-      <aside className="row-start-2 row-span-1">
+      <aside className="sm:row-start-2 sm:row-span-1 hidden sm:block">
         <Sidebar />
       </aside>
       <main className="col-start-2 col-span-1">

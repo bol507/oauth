@@ -4,3 +4,10 @@
     grid-template-columns: 15rem 1fr;
     height: 100vh;
 }
+
+
+@media (max-width: 640px) {
+    .dashboardLayout {
+      grid-template-columns: 1fr;
+    }
+  }

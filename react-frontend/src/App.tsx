@@ -58,7 +58,6 @@ const App = () => {
     routes = (
       <Route path="/" element={<AuthLayout />}>
         <Route index element={<Oauth />} />
-        <Route path="/logout" element={<Logout />} />
       </Route>
     );
   }

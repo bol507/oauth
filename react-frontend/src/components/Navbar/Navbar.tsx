@@ -1,12 +1,24 @@
-import React from 'react';
+import { useState } from 'react';
+
 import Links from './Links';
+import Hamburger from './Hamburger';
 import { Link } from 'react-router-dom';
+import { useUser } from '@/contexts/userContext';
 
 const Navbar = () => {
-  const isLogged = true;
+  const { isLogged } = useUser();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
   const navClass = `
     flex
-    justify-end
+    md:justify-end
+    sm:justify-start
+    md:flex-row
+    sm:flex-col
+    justify-between
     flex-no-wrap 
     relative
     w-full
@@ -18,10 +30,11 @@ const Navbar = () => {
 
   return (
     <nav className={navClass}>
+      <Hamburger showIt={handleToggle} />
       {isLogged ? (
         <Links />
       ) : (
-        <Link className="mx-5 px-2" to="login">
+        <Link className="mx-5 px-2" to="/">
           login
         </Link>
       )}

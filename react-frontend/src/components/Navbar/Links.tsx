@@ -12,8 +12,8 @@ const Links = () => {
   };
 
   return (
-    <div className="px-2 hidden sm:block">
-      <div className="text-sm ">
+    <div className="flex ">
+      <div className="hidden sm:block">
         <a href="#" className="mt-1 hover:text-green-700 mr-4">
           link 1
         </a>
@@ -23,11 +23,10 @@ const Links = () => {
         <a href="#" className="mt-1  hover:text-green-700 mr-4">
           link 3
         </a>
-
-        <Link className="mx-5 px-2" onClick={handleLogout}>
-          Logout
-        </Link>
       </div>
+      <Link className="mx-5 px-2" onClick={handleLogout}>
+        Logout
+      </Link>
     </div>
   );
 };
